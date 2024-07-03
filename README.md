@@ -1,6 +1,6 @@
-My 
-
+Boilerplate Express.js - MongoDB - Mongoose ODM
 ```
+Project Structure:
 express-mongodb-boilerplate
 ├─ .gitignore
 ├─ config
