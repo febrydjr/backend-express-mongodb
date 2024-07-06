@@ -12,3 +12,5 @@ files.forEach((file) => {
     exports[routeName] = require(filePath);
   }
 });
+
+console.log("4. Middleware Loaded");

@@ -3,6 +3,8 @@ const userService = require("../services/userService");
 
 const getUsers = async (req, res) => {
   try {
+    // const { id } = req.user;
+    // const token = req.token;
     const users = await userService.getUsers();
     response(res, 200, users);
   } catch (err) {
@@ -13,6 +15,7 @@ const getUsers = async (req, res) => {
 
 const createUser = async (req, res) => {
   try {
+    // const { id } = req.user;
     const { name, email, password } = req.body;
     const user = await userService.createUser(name, email, password);
     response(res, 200, user);
