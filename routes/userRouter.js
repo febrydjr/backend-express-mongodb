@@ -13,7 +13,7 @@ router.get(
 router.post(
   "/",
   authentication,
-  authorization(1, 2),
+  authorization(1),
   joi(authValidation.createUserSchema),
   userController.createUser
 );
