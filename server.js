@@ -2,17 +2,15 @@ const express = require("express");
 const { apiError } = require("./utils");
 const cors = require("cors");
 const path = require("path");
+const connectDatabase = require("./configs/database");
 require("dotenv").config({
   path: path.resolve(__dirname, "./.env"),
 });
-const connectDatabase = require("./configs/database");
 
-connectDatabase();
 
 const app = express();
 app.use(express.json());
 app.use(cors());
-const PORT = process.env.PORT;
 
 // routes import
 const { userRouter, blogRouter } = require("./routes");
@@ -38,6 +36,8 @@ app.use((err, req, res, next) => {
   res.status(error.status).json(error);
 });
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+connectDatabase();
+
+app.listen(process.env.PORT, () => {
+  console.log(`Server is running on port ${process.env.PORT}`);
 });
