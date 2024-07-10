@@ -8,10 +8,10 @@ const dbTransaction = async (req, res, next) => {
   res.on("finish", async () => {
     if (res.statusCode >= 400) {
       await session.abortTransaction();
-      console.log("Transaction aborted");
+      console.log(`Transaction ${req.method} ${req.url} aborted ❌`);
     } else {
       await session.commitTransaction();
-      console.log("Transaction committed");
+      console.log("Transaction commited ✔️");
     }
     session.endSession();
   });
