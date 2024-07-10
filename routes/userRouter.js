@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const { userController } = require("../controllers");
-const { authentication, authorization, joi } = require("../middlewares");
+const { authentication, authorization, joi, dbTransaction } = require("../middlewares");
 const { authValidation } = require("../validations");
 
 router.get(
@@ -15,6 +15,7 @@ router.post(
   authentication,
   authorization(1),
   joi(authValidation.createUserSchema),
+  dbTransaction,
   userController.createUser
 );
 
